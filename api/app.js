@@ -29,14 +29,7 @@ const enableGlobalErrorLogging =
 const app = express();
 
 // setting up cros-origin resource sharing
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  next();
-});
+app.use(cors());
 
 // Setup request body JSON parsing.
 app.use(express.json());
