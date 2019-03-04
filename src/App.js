@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Link, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import Axios from "axios";
 
 // importing components
 import NavBar from "./components/navBar";
@@ -16,7 +17,20 @@ import "./styles/global.css";
 class App extends Component {
   // creating state for courses
   state = {};
-
+  signInhandler() {
+    console.log("will sing user");
+  }
+  signupHandler = userData => e => {
+    e.preventDefault();
+    Axios.post("http://localhost:5000/api/users", {
+      firstName: userData.firstName,
+      lastName: userData.lastName,
+      emailAddress: userData.emailAddress,
+      password: userData.password
+    })
+      .then(res => console.log(res))
+      .catch(err => console.log(err));
+  };
   render() {
     return (
       <Router>
@@ -26,8 +40,11 @@ class App extends Component {
           <Route exact path="/courses" component={CreateCourse} />
           <Route exact path="/courses/:id" component={CourseDetails} />
           <Route path="/courses/:id/update" component={UpdateCourse} />
-          <Route path="/signin" component={SignIn} />
-          <Route path="/signup" component={SignUp} />
+          <Route path="/signin" component={() => <SignIn myProp="value" />} />
+          <Route
+            path="/signup"
+            component={() => <SignUp signupHandle={this.signupHandler} />}
+          />
           {/* <Route path='/signout' Component={}/> */}
         </React.Fragment>
       </Router>

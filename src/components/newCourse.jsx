@@ -3,10 +3,7 @@ const newCourse = () => {
   return (
     <div className="bounds">
       <div className="grid-33">
-        <a
-          className="course--module course--add--module"
-          href="create-course.html"
-        >
+        <a className="course--module course--add--module" href="/courses">
           <h3 className="course--add--title">
             <svg
               version="1.1"

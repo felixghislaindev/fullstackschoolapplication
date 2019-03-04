@@ -25,10 +25,11 @@ class courseDetails extends Component {
       .catch(err => console.log(err));
   }
   render() {
+    const courseId = this.props.match.params.id;
     return (
       <React.Fragment>
         <NavSec />
-        <CourseButtons />
+        <CourseButtons courseId={courseId} />
         <div className="bounds course--detail">
           <TitleDesc
             courseTitle={this.state.course.title}

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const navBar = () => {
   return (
@@ -6,8 +7,12 @@ const navBar = () => {
       <div className="bounds">
         <h1 className="header--logo">Courses</h1>
         <nav>
-          <span className="signup" /> Sign Up
-          <span className="signin">Sign In</span>
+          <Link className="signup" to={`/signup`}>
+            Sign Up
+          </Link>
+          <Link className="signin" to={`/signin`}>
+            Sign In
+          </Link>
         </nav>
       </div>
     </div>
